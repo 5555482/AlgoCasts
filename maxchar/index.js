@@ -7,14 +7,30 @@
 
 function maxChar(str) {
   const charMap = {};
+  let max = 0;
+  let maxChar = "";
 
   for (let char of str) {
     charMap[char] = charMap[char]++ || 1;
   }
-  console.log("CHHHHHHHHR" + JSON.stringify(charMap));
-  return Object.keys(charMap).find(
-    key => charMap[key] === Math.max(...Object.values(charMap))
-  );
+  for (let char in charMap) {
+    if (charMap[char] > max) {
+      max = charMap[char];
+      maxChar = char;
+    }
+  }
+  return maxChar;
 }
 
 module.exports = maxChar;
+
+// function maxChar(str) {
+//   const charMap = {};
+
+//   for (let char of str) {
+//     charMap[char] = charMap[char]++ || 1;
+//   }
+//   return Object.keys(charMap).find(
+//     key => charMap[key] === Math.max(...Object.values(charMap))
+//   );
+// }
